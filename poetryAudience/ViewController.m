@@ -29,8 +29,8 @@
 @property (nonatomic, strong)IpConfigView *configView;
 
 @property (nonatomic, strong)MathView *mathView;
-
-
+/// 分数
+@property (nonatomic, copy)NSString *myNuber;
 
 @property (nonatomic, copy)NSString  *configIP;
 @end
@@ -149,11 +149,11 @@
             /// 复位 回到logo 页
 //            self.startView.tipsLabel.text = @"";
 //            [self operateView:self.startView withState:NO];
-            self.mathView.number = @"0";
-            [self operateView:self.mathView withState:NO];
+//            self.mathView.number = @"0";
+//            [self operateView:self.mathView withState:NO];
             
-            self.mathView.number = @"0";
-            [self operateView:self.mathView withState:NO];
+//            self.mathView.number = @"0";
+            [self operateView:self.startView withState:NO];
         }else if ([receiveStr isEqualToString:@"60"]){
           
             
@@ -165,7 +165,7 @@
             NSDictionary *dic = [self dictionaryWithJsonString:receiveStr];
              if([dic[@"type"] isEqualToString:@"poetryNumber"]){
                 /// 第五关
-                
+                 self.myNuber = [NSString stringWithFormat:@"%@",dic[@"number"]];
                 self.mathView.number =[NSString stringWithFormat:@"%@",dic[@"number"]];
                 [self operateView:self.mathView withState:NO];
                 
